@@ -70,7 +70,7 @@ const calculateFaceLocation = (data) => {
   const onButtonSubmit = () => {
   setImageUrl(input);
 
-  fetch('http://localhost:3000/imageurl', {
+  fetch('https://smartbrains-1.onrender.com/imageurl', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -88,7 +88,7 @@ const calculateFaceLocation = (data) => {
 
     // Solo si hubo respuesta válida, actualizamos entries
     if (response && user.id) {
-      fetch('http://localhost:3000/image', {
+      fetch('https://smartbrains-1.onrender.com/image', {
         method: 'put',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
