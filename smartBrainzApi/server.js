@@ -23,6 +23,8 @@ app.use(cors());
 
 app.get('/', (req, res) => res.send('success'));
 
+
+
 app.post('/signin', (req, res) => {
   const { email, password } = req.body;
   if (!email || !password){
@@ -42,6 +44,9 @@ app.post('/signin', (req, res) => {
     })
     .catch(() => res.status(400).json('wrong credentials'));
 });
+
+
+
 
 app.post('/register', (req, res) => {
   const { name, email, password } = req.body;
@@ -63,6 +68,8 @@ app.post('/register', (req, res) => {
   }).catch(() => res.status(400).json('Unable to register'));
 });
 
+
+
 app.get('/profile/:id', (req, res) => {
   const { id } = req.params;
   db.select('*').from('users').where({ id })
@@ -73,4 +80,4 @@ app.get('/profile/:id', (req, res) => {
 app.put('/image', (req, res) => image.handleImage(req, res, db));
 app.post('/imageurl', (req, res) => image.handleApiCall(req, res));
 
-app.listen(3000, () => console.log('App is running on port 3000'));
+app.listen(process.env.PORT || 3000, () => console.log(`App is running on port ${process.env.PORT}`));
