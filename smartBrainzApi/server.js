@@ -68,6 +68,22 @@ app.post('/register', (req, res) => {
   }).catch(() => res.status(400).json('Unable to register'));
 });
 
+app.get('/testdb', async (req, res) => {
+  try {
+    const users = await db.select('*').from('users');
+    res.json({
+      success: true,
+      rows: users.length,
+      sample: users[0] || null
+    });
+  } catch (err) {
+    console.error('DB ERROR:', err);
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
+});
 
 
 app.get('/profile/:id', (req, res) => {
