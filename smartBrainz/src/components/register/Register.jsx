@@ -21,7 +21,7 @@ const onPasswordChange = (event) => {
 const onSubmitSignIn = (event) =>{
 	event.preventDefault();
 
-	fetch('https://smartbrains-1.onrender.com/register',{
+	fetch('https://smartbrains-api-9uy4.onrender.com/register',{
 		method:'post',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
